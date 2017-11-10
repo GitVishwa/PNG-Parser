@@ -1,0 +1,52 @@
+Software Requirement Specification
+
+PURPOSE:
+
+Create a parser function which parses the headers and image data of .jpeg(Joint Photographic Experts Group) files.
+
+REQUIREMENTS:
+
+1. Functionality to extract the contents of only the header of the .jpg file on entering -h as one of the arguments.
+
+2. The functionality should extract the contents of only the image data of the .jpg file (and not the header of the file) in hexadecimal ie. to show the hexdump of the .jpg file on entering -d as one the arguments.
+
+3. The functionality should display the contents of header as well as the image data of the .jpg file when the user doesn't enter any of the above arguments.
+
+Here the contents corresponds of the display(output) to the information (headers or image data or both) which is understandable or unambiguous to the user.
+
+DESIGN:
+
+Data format:
+
+	* JPEG SOI(Start Of Image) marker (FFD8 hex): 2 bytes
+
+	* Image width in pixels: 2 bytes
+
+	* Image height in pixels: 2 bytes
+
+	* Number of components (1 = grayscale, 3 = RGB): 1 byte
+
+	* Horizontal/vertical sampling factors for component 1: 1 byte
+
+	* Sampling factors for component 2 (if RGB): 1 byte
+
+	* Sampling factors for component 3 (if RGB): 1 byte (source: http://www.fastgraph.com/help/jpeg_header_format.html)
+
+
+Logic:
+
+
+TEST PLAN:
+
+	* Checking for a empty file.
+	* Checking for a file of other extensions.
+	* Checking for null file.
+	* Check if the obtained parsed value same as the values in hexdump by comparing the binary values.
+ 
+
+
+	
+
+
+
+
